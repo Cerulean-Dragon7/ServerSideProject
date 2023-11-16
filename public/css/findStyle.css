@@ -1,0 +1,74 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+body{
+    background: #b8f8e8;
+    height: 89vh;
+}
+nav{
+    background: #0082e6;
+    height: 80px;
+    width: 100%;
+}
+label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+a:hover{
+    background: #1b9bff;
+    transition: .5s;
+}
+.createTitle{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.bodycontent{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.container{
+    position: relative;
+    padding: 10px;
+}
+.mainbox{
+    display: grid;
+    gap: 3%;
+    align-items: flex-start;
+}
+.filter_form ul{
+    padding-left: 30px;
+}
+.filter_container{
+    padding: 10px;
+}
+.filter_label{
+    user-select: none;
+}

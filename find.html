@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8 "> 
+        <title>find</title>
+        <link rel="stylesheet" href="public/css/findStyle.css">
+    </head>
+    <body>
+        <div>
+            <nav>
+                <label class="logo">Supply Management System</label>
+                <ul>
+                    <li><a href="/create" role="button">create</a></li>
+                    <li><a href="/find" role="button">find</a></li>
+                    <li><a href="/logout" role="button">logout</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="topbox_container">
+                <div>
+                    <h2>
+                        <span>Orders</span>
+                        <span></span>
+                    </h2>
+                </div>
+            </div>
+            <section class="main_box">
+                <aside class="filter">
+                    <div class="filter_container">
+                        <form class="filter_form">
+                            <legend class="filter_legend_location">
+                                <span><h2>Location</h2></span>
+                            </legend>
+                            <ul>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="London" id="London">
+                                    <label class="filter_label" for="London">London</label>
+                                </li>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="SanDiego" id="SanDiego">
+                                    <label class="filter_label" for="SanDiego">San Diego</label>
+                                </li>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="Denver" id="Denver">
+                                    <label class="filter_label" for="Denver">Denver</label>
+                                </li>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="Seattle" id="Seattle">
+                                    <label class="filter_label" for="Seattle">Seattle</label>
+                                </li>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="Austin" id="Austin">
+                                    <label class="filter_label" for="Austin">Austin</label>
+                                </li>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="NewYork" id="NewYork">
+                                    <label class="filter_label" for="NewYork">New York</label>
+                                </li>
+                            </ul>
+                            <legend class="filter_legend_coupon">
+                                <span><h2>coupon</h2></span>
+                            </legend>
+                            <ul>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="true" id="couponused_true">
+                                    <label class="filter_label" for="couponused_true">True</label>
+                                </li>
+                                <li>
+                                    <input class="filter_checkbox" type="checkbox" value="false" id="couponused_false">
+                                    <label class="filter_label" for="couponused_false">False</label>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </body>
+</html>
+
+<!-- location: ['London', 'San Diego', 'Denver', 'Seattle', 'Austin', 'New York']-->
