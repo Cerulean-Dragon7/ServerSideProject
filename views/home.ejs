@@ -3,12 +3,13 @@
     <head>
         <meta charset="UTF-8 "> 
         <title>home</title>
-        <link rel="stylesheet" href="public/css/homeStyle.css">
+        <link rel="stylesheet" href="/css/homeStyle.css" type="text/css">
     </head>
     <body>
         <nav>
             <label class="logo">Supply Management System</label>
             <ul>
+                <li><a href="/home" role="button">home</a></li>
                 <li><a href="/create" role="button">create</a></li>
                 <li><a href="/find" role="button">find</a></li>
                 <li><a href="/logout" role="button">logout</a></li>
@@ -18,13 +19,25 @@
         <div class="data">
             <ul class="summaryList">
                 <li class="title">Total order</li>
-                <li class="dataShow">data</li>
+                <li class="dataShow">
+                    <% if (typeof total_order !== 'undefined') { %>
+                        <%= total_order %>
+                    <% } %></li>
                 <li class="title">Order from online</li>
-                <li class="dataShow">data</li>
+                <li class="dataShow">
+                    <% if (typeof order_online !== 'undefined') { %>
+                        <%= order_online %>
+                    <% } %></li>
                 <li class="title">Order from store</li>
-                <li class="dataShow">data</li>
-                <li class="title">revenue</li>
-                <li class="dataShow">data</li>
+                <li class="dataShow">
+                    <% if (typeof order_store !== 'undefined') { %>
+                        <%= order_store %>
+                    <% } %></li>
+                <li class="title">Order from phone</li>
+                <li class="dataShow">
+                    <% if (typeof order_phone !== 'undefined') { %>
+                        <%= order_phone %>
+                    <% } %></li>
             </ul>
         </div>
     </body>

@@ -3,13 +3,15 @@
     <head>
         <meta charset="UTF-8 "> 
         <title>create</title>
-        <link rel="stylesheet" href="createStyle.css" type="'text/css">
+        <link rel="stylesheet" href="/css/createStyle.css" type="text/css">
+        <script src="/js/create.js"></script>
     </head>
     <body>
         <div>
         <nav>
             <label class="logo">Supply Management System</label>
             <ul>
+                <li><a href="/home" role="button">home</a></li>
                 <li><a href="/create" role="button">create</a></li>
                 <li><a href="/find" role="button">find</a></li>
                 <li><a href="/logout" role="button">logout</a></li>
@@ -22,12 +24,13 @@
                 <div class="createTitle">
                     Create new data
                 </div>
-                <form action="/create" method="POST">
+                <form action="/create" method="post" id="form_create">
+
                     <div>   
                         <label for="gender"><b>Customer gender: </b></label>
 
                         <label for="M" style="margin-right: 0px;"><b>M</b></label>
-                            <input type="radio" id="M" name="gender" value="M" required>
+                            <input type="radio" id="M" name="gender" value="M" required checked>
 
                         <label for="F" style="margin-right: 0px; margin-left: 10px;"><b>F</b></label>
                             <input type="radio" id="F" name="gender" value="F" required><br>
@@ -71,36 +74,36 @@
                     <div>
                         <label for="purchaseMethodRadio"><b>Purchased Method: </b></label>
 
-                        <input type="radio" id="purchaseMethod1" name="purchaseMethod" value="instore" required checked>
+                        <input type="radio" id="purchaseMethod1" name="purchaseMethod" value="In store" required checked>
                         <label for="purchaseMethod1" style="margin-right: 5px;"><b>In store</b></label>
 
-                        <input type="radio" id="purchaseMethod2" name="purchaseMethod" value="online" required>
+                        <input type="radio" id="purchaseMethod2" name="purchaseMethod" value="Online" required>
                         <label for="purchaseMethod2" ><b>Online</b></label>           
 
-                        <input type="radio" id="purchaseMethod3" name="purchaseMethod" value="phone" required>
+                        <input type="radio" id="purchaseMethod3" name="purchaseMethod" value="Phone" required>
                         <label for="purchaseMethod3" ><b>Phone</b></label>         
                     </div>
 
                     <div>
                         <label for="saledate"><b>Sale Date</b></label>
-                        <input type="datetime-local" id="saledate" required><br>
+                        <input type="datetime-local" id="saledate" required name="date"><br>
                     </div>
 
                     <div class="div_item_label_button_container">
                         <label class="itemLabel">Item sales</label>
 
                         <div class="div_add_button">
-                            <input type="button" class="addButton" value="new row"></button>
+                            <input type="button" class="addButton" value="new row" onclick="addRow()"></button>
                         </div>
                     </div>
                     
-                    <div class="div_item_list">
-                        <ul id="item_sales_input_list">
+                    <div class="div_item_list" id="div_item_list">
+                        <ul id="item_sales_input_list" >
                             <li class="li_colum_first">
                                 <ul class="colum">
                                     <li>
                                         <label for="name_of_item">Item Name</label>
-                                        <input list="name_of_item" type="text" class="field_style">
+                                        <input list="name_of_item" type="text" class="field_style"  name="item_name[]" required>
                                         <datalist id="name_of_item">
                                             <option value="envelopes"></option>
                                             <option value="notepad"></option>
@@ -118,7 +121,7 @@
                                 <ul class="colum">
                                     <li>
                                         <label for="price_of_item">Price</label>
-                                        <input id="price_of_item" type="number" class="field_style" step="0.01" min="0">
+                                        <input id="price_of_item" type="number" class="field_style" step="0.01" min="0" name="item_price[]" required>
                                     </li>
                                 </ul>
                             </li>
@@ -127,12 +130,15 @@
                                 <ul class="colum">
                                     <li>
                                         <label for="quantity_of_item">Quantity</label>
-                                        <input id="quantity_of_item" type="number" class="field_style" min="0">
+                                        <input id="quantity_of_item" type="number" class="field_style" min="0" name="item_quantity[]" required>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
+                    </div>
 
+                    <div class="cretae_button">
+                        <button type="submit" for="form_create">create</button>
                     </div>
                 </form>
             </div>

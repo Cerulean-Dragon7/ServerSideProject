@@ -7,7 +7,9 @@
         "express": "*",
         "ejs": "*",
         "nodemon": "*",
-        "path": "*"
+        "body-parser": "*",
+        "cookie-session": "*",
+        "mongodb": "*"
     },
     "engine": "*",
     "scripts": {
