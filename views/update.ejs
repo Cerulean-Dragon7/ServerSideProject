@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8 "> 
         <title>create</title>
-        <link rel="stylesheet" href="/css/createStyle.css" type="text/css">
-        <script src="js/create.js"></script>
+        <link rel="stylesheet" href="/css/updateStyle.css" type="text/css">
+        <script src="js/update.js"></script>
     </head>
     <body>
         <div>
@@ -24,7 +24,7 @@
                 <div class="createTitle">
                     Create new data
                 </div>
-                <form action="/create" method="post" id="form_create">
+                <form action="/update" method="post" id="form_create">
 
                     <div>   
                         <label for="gender"><b>Customer gender: </b></label>
@@ -37,11 +37,11 @@
                     </div>
                     <div> 
                         <label for="age"><b>Age: </b></label>
-                            <input type="number" id="age" name="age" placeholder="" min="0" max="100" required><br>
+                            <input type="number" id="age" name="age" placeholder="" min="0" max="100" required value=""><br>
                     </div>
                     <div>
                         <label for="email"><b>email: </b></label>
-                            <input type="email" id="email" name="email" placeholder="" required><br>
+                            <input type="email" id="email" name="email" required ><br>
                     </div>
                     <div>
                         <label for="satisfaction"><b>satisfaction: </b></label>
@@ -145,17 +145,3 @@
         </div>
     </body>
 </html>
-
-<!-- tag: ['stationary', 'office', 'general', 'writing', 'school', 'electronics', 'organization', 'travel', 'kids']-->
-
-<!-- name: ['envelopes', 'notepad', 'printer paper', 'laptop', 'pens', 'binder', 'backpack']-->
-
-<!-- location: ['London', 'San Diego', 'Denver', 'Seattle', 'Austin', 'New York']-->
-
-<!-- name with tag [('envelopes', ['stationary', 'office', 'general']),
-    ('notepad', ['office', 'writing', 'school']), 
-    ('printer paper', ['office', 'stationary']), 
-    ('laptop', ['electronics', 'school', 'office']), 
-    ('pens', ['writing', 'office', 'school', 'stationary']),
-    ('binder', ['school', 'general', 'organization']), 
-    ('backpack', ['school', 'travel', 'kids'])]-->

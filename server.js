@@ -3,7 +3,7 @@ const assert = require('assert');
 const session = require('cookie-session');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectId;
 const app = express();
 
 app.use(express.static(__dirname+'/public'));
@@ -63,14 +63,14 @@ const dbconnection = async function() {
 const findDocument = async function(criteria, callback){
     try{
         await dbconnection();
-        let cursor = await database.collection(collectionName).find(criteria).toArray();
+        let cursor = await database.collection(collectionName).find(criteria).limit(100).toArray();
         console.log(`findDocument: ${JSON.stringify(criteria)}`);
         
         await closeConnection();
         return callback(cursor);
-
     }catch(error){
-        console.error('Error of findDociment: ' , error);
+        await closeConnection();
+        throw error;
     }
 }
 
@@ -116,6 +116,7 @@ const createDocument = async function(body, callback){
         await closeConnection();
         callback(document);
     }catch(error){
+        await closeConnection();
         console.error('create docs error: ', error )
     }
 }
@@ -200,9 +201,8 @@ app.get("/create", (req, res) => {
 
 app.get("/find",async (req, res) => {
     let criteria ={};
-    await findDocument(criteria, function(docs){
-        res.status(200).render('find',{docs});
-    });
+    res.status(200).render('find');
+
 });
 
 app.get("/home", async (req, res) => {
@@ -288,23 +288,39 @@ app.post("/find", async (req, res) =>{
         console.log(new Date(req.body.date+'T23:59:59'));
         criteria['saleDate'] = {$gte: new Date(req.body.date),$lt: new Date(req.body.date+'T23:59:59Z')};
     }
-    
+    criteria['saleDate'] = new Date('2017-12-31T16:11:17.768+00:00');
     console.log('criteria:',criteria);
-    await findDocument(criteria, function(docs){
+    try{
+        await findDocument(criteria, function(docs){
         console.log("find:", docs.length);
         res.render('find', {docs});
-    });
+    }); 
+    }catch(error){
+        res.render('find');
+    }
+
 });
-// {
-//     location: 'Austin',
-//     couponUsed: 'false',
-//     purchaseMethod: [ 'online' ],
-//     item: [ 'envelopes', 'envelopes' ],
-//     tags: [ 'general', 'writing' ],
-//     date: ''
-//   }
-const server = app.listen(process.env.PORT || 3000, () => {
+
+app.get('/update', async function(req,res){
+    console.log(req.query);
+    try{
+        criteria = {};
+        criteria['_id'] = new ObjectId(req.query.id);
+        console.log(criteria);
+        await findDocument(criteria, function(doc){
+            res.status(200).render('update',{doc});
+        });
+        
+    }
+    catch(error){
+        console.log(error);
+        res.redirect('find');
+    }
+    
+});
+const server = app.listen(process.env.PORT || 8099, () => {
     const port = server.address().port;
     console.log(`Server listening at port ${port}`);
 });
+
 

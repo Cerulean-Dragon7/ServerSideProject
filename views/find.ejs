@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8 "> 
         <title>find</title>
-        <link rel="stylesheet" href="/css/findStyle.css" type="text/css">
+        <link rel="stylesheet" href="../css/findStyle.css" type="text/css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="js/find.js"></script>
     </head>
     <body>
         <div>
@@ -181,60 +183,104 @@
                             </form>
                         </div>
                     </aside>
+
+
                     <section class="orders_section">
                         <div class="orders_container">
-
-                            <%  if (typeof docs !== 'undefined') {
-                                    docs.forEach(function(doc) { %>
-                                        <div class="order">
-                                            <div class="div_every_element">
-                                                <label class="label">date:</label>
-                                                <div class="content"><%= doc.saleDate %></div>
-                                            </div>
-                                            <% doc.items.forEach(function(item, index) { %>
-                                                <div class="div_every_element">
-                                                    <label class="label">Item<%= index + 1 %>:</label>
-                                                    <div class="content">
-                                                        <div class="div_item">
-                                                            <div>name: <%= item.name %></div>
-                                                            <div>price: <%= item.price.toString() %></div>
-                                                            <div>quantity: <%= item.quantity %></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <% }); %>
-                                            <div class="div_every_element">
-                                                <label class="label">Store Location:</label>
-                                                <div class="content"><%= doc.storeLocation %></div>
-                                            </div>
-                                            <div class="div_every_element">
-                                                <label class="label">Customer:</label>
-                                                <div class="content">
-                                                    <div class="div_customer">
-                                                        <div>gender: <%= doc.customer.gender %></div>
-                                                        <div>age: <%= doc.customer.age %></div>
-                                                        <div>email: <%= doc.customer.email %></div>
-                                                        <div>satisfaction: <%= doc.customer.satisfaction %></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="div_every_element">
-                                                <label class="label">Coupon used:</label>
-                                                <div class="content"><%= doc.couponUsed %></div>
-                                            </div>
-                                            <div class="div_every_element">
-                                                <label class="label">Purchase method:</label>
-                                                <div class="content"><%= doc.purchaseMethod %></div>
+                            <% if (typeof docs !== 'undefined') {
+                                docs.forEach(function(doc, index) { %>
+                        
+                            <div class="order_title_container" id=<%= docs[index]._id.toString()%>>
+                                <div class="title">
+                                    <div>
+                                        <label>Order: <%= index+1 %></label>
+                                    </div>
+                                    <div>
+                                        <button class="edit_button" id="edit_button">Edit</button>
+                                    </div>
+                                    <div>
+                                        <button class="delete_button" id="delete_button">Delete</button>
+                                    </div>
+                                </div>
+                                <div class="order">
+                                    <div class="div_every_element">
+                                        <label class="label"><h4>date: </h4></label>
+                                        <div class="content"><span class="date"><%= doc.saleDate %></span></div>
+                                    </div>
+                                    <% doc.items.forEach(function(item, index) { %>
+                                    <div class="div_every_element">
+                                        <label class="label">
+                                            <h4>Item:</h4>
+                                            <div><%= index + 1 %></div>
+                                        </label>
+                                        <div class="content">
+                                            <div class="div_item">
+                                                <div><h4>name: </h4><span  class="item_name"><%= item.name %></span></div>
+                                                <div><h4>price: </h4> <span class="item_price"><%= item.price.toString() %></span></div>
+                                                <div><h4>quantity: </h4><span class="item_quantity"><%= item.quantity %></span></div>
                                             </div>
                                         </div>
-                                    <% }); 
+                                    </div>
+                                    <% }); %>
+                                    <div class="div_every_element">
+                                        <label class="label"><h4>Store Location:</h4></label>
+                                        <div class="content"><span class="storeLocation"><%= doc.storeLocation %></span></div>
+                                    </div>
+                                    <div class="div_every_element">
+                                        <label class="label"><h4>Customer:</h4></label>
+                                        <div class="content">
+                                            <div class="div_customer">
+                                                <div><h4>gender:</h4><span class="customer_gender"> <%= doc.customer.gender %></span></div>
+                                                <div><h4>age:</h4><span class="customer_age"> <%= doc.customer.age %></span></div>
+                                                <div><h4>email:</h4><span class="customer_email"><%= doc.customer.email %></span></div>
+                                                <div><h4>satisfaction:</h4><span class="customer_satisfaction"> <%= doc.customer.satisfaction %></span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_every_element">
+                                        <label class="label"><h4>Coupon used:</h4></label>
+                                        <div class="content"><span class="couponUsed"><%= doc.couponUsed %></span></div>
+                                    </div>
+                                    <div class="div_every_element">
+                                        <label class="label"><h4>Purchase method:</h4></label>
+                                        <div class="content"><span class="purchaseMethod"><%= doc.purchaseMethod %></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <% });
                             }%>
-                            
                         </div>
                     </section>
             </section>
         </div>
+
+
     </body>
+    <script>
+        $(document).ready(function() {
+        // Handle click event of the "Edit" button
+        $('.edit_button').click(function() {
+            // Get the order ID from the parent container's ID attribute
+            var orderId = $(this).closest('.order_title_container').attr('id');
+            console.log(orderId);
+            // Redirect the user to the update page with the order ID
+            window.location.href = '/update?id=' + orderId;
+        });
+        });
+
+        
+        $(document).ready(function() {
+        // Handle click event of the "Edit" button
+        $('.delete_button').click(function() {
+            // Get the order ID from the parent container's ID attribute
+            var orderId = $(this).closest('.order_title_container').attr('id');
+            
+            // Redirect the user to the update page with the order ID
+            window.location.href = '/delete?id=' + orderId;
+        });
+        });
+    </script>
 </html>
 
 <!-- location: ['London', 'San Diego', 'Denver', 'Seattle', 'Austin', 'New York']-->
