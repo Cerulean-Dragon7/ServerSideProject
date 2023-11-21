@@ -47,6 +47,7 @@ a:hover{
     font-weight: bold;
     border-bottom: 1px solid black;
 }
+
 .bodycontent{
     position: relative;
     display: flex;
@@ -58,17 +59,70 @@ a:hover{
     position: relative;
     padding: 10px;
 }
-.mainbox{
-    display: grid;
-    gap: 3%;
-    align-items: flex-start;
-}
+
 .filter_form ul{
     padding-left: 30px;
 }
 .filter_container{
     padding: 10px;
 }
+.filter{
+    width: 220px;
+}
 .filter_label{
+    user-select: none;
+}
+.filter_form button{
+    margin: 10px 0 0 10px;
+}
+.Orders_section{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.main_box {
+    display: flex;
+    grid-template-columns: 23% 74%;
+    gap: 3%;
+}
+
+.orders_section{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.orders_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Three columns */
+    gap: 20px 3%;
+    white-space: nowrap; /* Prevent wrapping to the next line */
+    height: 700px;
+    overflow: auto;
+}
+.order{
+    padding: 15px;
+    width: 350px;
+    height: 250px;
+    overflow: auto;
+    background-color: #a5f4fa;
+}
+.div_every_element{
+    display: flex;
+    font-size: 20px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+.div_every_element .content{
+    margin-left: 10px;
+}
+.div_every_element .content .div_item{
+    margin-top: 15px;
+}
+.div_every_element .content .div_customer{
+    margin-top: 15px;
+}
+
+.filter_checkbox_date{
     user-select: none;
 }

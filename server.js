@@ -16,6 +16,16 @@ const users = new Array(
 	{name: 'user2', password: 'usertest2'}
 );
 
+//list of item with its tag
+const taglist =new Array(
+    {name: 'envelopes', tag: ['stationary', 'office', 'general']},
+    {name:'notepad',tag:  ['office', 'writing', 'school']}, 
+    {name: 'printer paper', tag:  ['office', 'stationary']}, 
+    {name: 'laptop', tag:  ['electronics', 'school', 'office']}, 
+    {name: 'pens', tag:  ['writing', 'office', 'school', 'stationary']},
+    {name: 'binder', tag:  ['school', 'general', 'organization']}, 
+    {name: 'backpack', tag:  ['school', 'travel', 'kids']});
+
 app.use(session({
     name: 'loginSession',
     keys: [SECRETKEY],
@@ -55,9 +65,10 @@ const findDocument = async function(criteria, callback){
         await dbconnection();
         let cursor = await database.collection(collectionName).find(criteria).toArray();
         console.log(`findDocument: ${JSON.stringify(criteria)}`);
-        if(cursor.length > 0){
-            return callback(cursor);
-        }
+        
+        await closeConnection();
+        return callback(cursor);
+
     }catch(error){
         console.error('Error of findDociment: ' , error);
     }
@@ -73,7 +84,16 @@ const createDocument = async function(body, callback){
 
         for(let i = 0; i< body.item_name.length; i++){
             let item = {};
+            let tags = [];
             item["name"] = body.item_name[i];
+            for(let j = 0;j <taglist.length;j++){
+                if(body.item_name[i] == taglist[j].name){
+                    console.log(taglist[j].name);
+                    console.log(taglist[j].tag);
+                    item['tags'] = taglist[j].tag;
+                }
+            }
+            
             item["price"] = parseFloat(body.item_price[i]);
             item["quantity"] = parseInt(body.item_quantity[i]);
             items.push(item);
@@ -162,7 +182,6 @@ app.post('/login', async (req, res) => {
                         break;
                 }
             })
-            await closeConnection();
             res.render('home', {total_order,order_online,order_store,order_phone});
         });
         
@@ -179,8 +198,11 @@ app.get("/create", (req, res) => {
     return res.status(200).render('create');
 });
 
-app.get("/find", (req, res) => {
-    return res.status(200).render('find');
+app.get("/find",async (req, res) => {
+    let criteria ={};
+    await findDocument(criteria, function(docs){
+        res.status(200).render('find',{docs});
+    });
 });
 
 app.get("/home", async (req, res) => {
@@ -210,10 +232,6 @@ app.get("/home", async (req, res) => {
     
 });
 
-app.get("/test", (req, res) => {
-    return res.status(200).render('test');
-}); 
-
 app.post("/create", async (req, res) => {
     createDocument(req.body,function(formated){
         console.log(formated);
@@ -222,6 +240,69 @@ app.post("/create", async (req, res) => {
     });
 }); 
 
+app.post("/find", async (req, res) =>{
+    console.log('requset body:',req.body);
+    let criteria = {};
+    
+    if('location' in req.body){
+        if(Array.isArray(req.body.location)){
+            criteria['storeLocation'] = {$in: req.body.location};
+        }
+        else{
+            criteria['storeLocation'] = req.body.location;
+        }
+    }
+
+    if('couponUsed' in req.body){
+        criteria['couponUsed'] = JSON.parse(req.body.couponUsed);
+    }
+
+    if('purchaseMethod' in req.body){
+        if(Array.isArray(req.body.purchaseMethod)){
+            criteria['purchaseMethod'] = {$in: req.body.purchaseMethod};
+        }
+        else{
+            criteria['purchaseMethod'] = req.body.purchaseMethod;
+        }
+    }
+
+    if('item' in req.body){
+        if(Array.isArray(req.body.item)){
+            criteria['items.name'] = {$in: req.body.item};
+        }
+        else{
+            criteria['items.name'] = req.body.item;
+        }
+    }
+
+    if('tags' in req.body){
+        if(Array.isArray(req.body.tags)){
+            criteria['items.tags'] = {$in: req.body.tags};
+        }
+        else{
+            criteria['items.tags'] = {$in: [req.body.tags]};
+        }
+    }
+
+    if(req.body.date != ''){//current data from 2013-1-1 to 2017-12-31
+        console.log(new Date(req.body.date+'T23:59:59'));
+        criteria['saleDate'] = {$gte: new Date(req.body.date),$lt: new Date(req.body.date+'T23:59:59Z')};
+    }
+    
+    console.log('criteria:',criteria);
+    await findDocument(criteria, function(docs){
+        console.log("find:", docs.length);
+        res.render('find', {docs});
+    });
+});
+// {
+//     location: 'Austin',
+//     couponUsed: 'false',
+//     purchaseMethod: [ 'online' ],
+//     item: [ 'envelopes', 'envelopes' ],
+//     tags: [ 'general', 'writing' ],
+//     date: ''
+//   }
 const server = app.listen(process.env.PORT || 3000, () => {
     const port = server.address().port;
     console.log(`Server listening at port ${port}`);

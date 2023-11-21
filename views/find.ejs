@@ -23,158 +23,215 @@
                 <div>
                     <h2>
                         <span>Orders</span>
-                        <span></span>
+                        <span class="number">
+                            <% if (typeof docs !== 'undefined') { %>
+                                ( <%= docs.length %> )
+                            <% } %>
+                        </span>
                     </h2>
                 </div>
             </div>
             <section class="main_box">
-                <aside class="filter">
-                    <div class="filter_container">
-                        <form class="filter_form">
-                            <legend class="filter_legend_location">
-                                <span><h2>Location</h2></span>
-                            </legend>
-                            <ul>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="London" id="London">
-                                    <label class="filter_label" for="London">London</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="SanDiego" id="SanDiego">
-                                    <label class="filter_label" for="SanDiego">San Diego</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="Denver" id="Denver">
-                                    <label class="filter_label" for="Denver">Denver</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="Seattle" id="Seattle">
-                                    <label class="filter_label" for="Seattle">Seattle</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="Austin" id="Austin">
-                                    <label class="filter_label" for="Austin">Austin</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="NewYork" id="NewYork">
-                                    <label class="filter_label" for="NewYork">New York</label>
-                                </li>
-                            </ul>
-                            <legend class="filter_legend_coupon">
-                                <span><h2>coupon</h2></span>
-                            </legend>
-                            <ul>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="true" id="couponused_true">
-                                    <label class="filter_label" for="couponused_true">True</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="false" id="couponused_false">
-                                    <label class="filter_label" for="couponused_false">False</label>
-                                </li>
-                            </ul>
-                            <legend class="filter_legend_purchaseMethod">
-                                <span><h2>Purchase Method</h2></span>
-                            </legend>
-                            <ul>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="In value" id="purchase_method_instore">
-                                    <label class="filter_label" for="purchase_method_instore">In store</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="online" id="purchase_method_online">
-                                    <label class="filter_label" for="purchase_method_online">Online</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="phone" id="purchase_method_online">
-                                    <label class="filter_label" for="purchase_method_online">Phone</label>
-                                </li>
-                            </ul>
-                            <legend class="filter_legend_item">
-                                <span><h2>Item</h2></span>
-                            </legend>
-                            <ul>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_envelopes">
-                                    <label class="filter_label" for="input_item_envelopes">envelopes</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_notepad">
-                                    <label class="filter_label" for="input_item_notepad">notepad</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_printerpaper">
-                                    <label class="filter_label" for="input_item_printerpaper">printer paper</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_laptop">
-                                    <label class="filter_label" for="input_item_laptop">laptop</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_pens">
-                                    <label class="filter_label" for="input_item_pens">pens</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_binder">
-                                    <label class="filter_label" for="input_v_binder">binder</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_backpack">
-                                    <label class="filter_label" for="input_item_backpack">backpack</label>
-                                </li>
-                            </ul>
-                            <legend class="filter_legend_tag">
-                                <span><h2>Tag</h2></span>
-                            </legend>
-                            <ul>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="stationary" id="input_tag_stationary">
-                                    <label class="filter_label" for="input_tag_stationary">stationary</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="office" id="input_tag_office">
-                                    <label class="filter_label" for="input_tag_office">office</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="general" id="input_tag_general">
-                                    <label class="filter_label" for="input_tag_general">general</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="writing" id="input_tag_writing">
-                                    <label class="filter_label" for="input_tag_writing">writing</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="school" id="input_tag_school">
-                                    <label class="filter_label" for="input_tag_school">school</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="electronics" id="input_tag_electronics">
-                                    <label class="filter_label" for="input_tag_electronics">electronics</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="organization" id="input_tag_organization">
-                                    <label class="filter_label" for="input_tag_organization">organization</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="travel" id="input_tag_travel">
-                                    <label class="filter_label" for="input_tag_travel">travel</label>
-                                </li>
-                                <li>
-                                    <input class="filter_checkbox" type="checkbox" value="kids" id="input_tag_kids">
-                                    <label class="filter_label" for="input_tag_kids">kids</label>
-                                </li>
-                            </ul>
-                            <legend class="filter_legend_date">
-                                <span><h2>Date</h2></span>
-                            </legend>
-                            <ul>
-                                <li>
-                                    <input class="filter_checkbox" type="date" id="input_tag_date">
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                </aside>
+                    <aside class="filter">
+                        <div class="filter_container">
+                            <form class="filter_form" action="/find" method="post" id="filter_form">
+                                <legend class="filter_legend_location">
+                                    <span><h2>Location</h2></span>
+                                </legend>
+                                <ul>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="London" id="London" name="location">
+                                        <label class="filter_label" for="London">London</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="San Diego" id="SanDiego" name="location">
+                                        <label class="filter_label" for="SanDiego">San Diego</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="Denver" id="Denver" name="location">
+                                        <label class="filter_label" for="Denver">Denver</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="Seattle" id="Seattle" name="location">
+                                        <label class="filter_label" for="Seattle">Seattle</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="Austin" id="Austin" name="location">
+                                        <label class="filter_label" for="Austin">Austin</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="New York" id="NewYork" name="location">
+                                        <label class="filter_label" for="NewYork">New York</label>
+                                    </li>
+                                </ul>
+                                <legend class="filter_legend_coupon">
+                                    <span><h2>coupon</h2></span>
+                                </legend>
+                                <ul>
+                                    <li>
+                                        <input class="filter_checkbox" type="radio" value="true" id="couponused_true" name="couponUsed">
+                                        <label class="filter_label" for="couponused_true">True</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="radio" value="false" id="couponused_false" name="couponUsed">
+                                        <label class="filter_label" for="couponused_false">False</label>
+                                    </li>
+                                </ul>
+                                <legend class="filter_legend_purchaseMethod">
+                                    <span><h2>Purchase Method</h2></span>
+                                </legend>
+                                <ul>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="In store" id="purchase_method_instore" name="purchaseMethod">
+                                        <label class="filter_label" for="purchase_method_instore">In store</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="Online" id="purchase_method_online" name="purchaseMethod">
+                                        <label class="filter_label" for="purchase_method_online">Online</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="Phone" id="purchase_method_phone" name="purchaseMethod">
+                                        <label class="filter_label" for="purchase_method_phone">Phone</label>
+                                    </li>
+                                </ul>
+                                <legend class="filter_legend_item">
+                                    <span><h2>Item</h2></span>
+                                </legend>
+                                <ul>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_envelopes" name="item">
+                                        <label class="filter_label" for="input_item_envelopes">envelopes</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="notepad" id="input_item_notepad" name="item">
+                                        <label class="filter_label" for="input_item_notepad">notepad</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="printer paper" id="input_item_printerpaper" name="item" >
+                                        <label class="filter_label" for="input_item_printerpaper">printer paper</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="laptop" id="input_item_laptop" name="item">
+                                        <label class="filter_label" for="input_item_laptop">laptop</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="pens" id="input_item_pens" name="item">
+                                        <label class="filter_label" for="input_item_pens">pens</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="binder" id="input_item_binder" name="item">
+                                        <label class="filter_label" for="input_v_binder">binder</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="backpack" id="input_item_backpack" name="item">
+                                        <label class="filter_label" for="input_item_backpack">backpack</label>
+                                    </li>
+                                </ul>
+                                <legend class="filter_legend_tag">
+                                    <span><h2>Tag</h2></span>
+                                </legend>
+                                <ul>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="stationary" id="input_tag_stationary" name="tags">
+                                        <label class="filter_label" for="input_tag_stationary">stationary</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="office" id="input_tag_office" name="tags">
+                                        <label class="filter_label" for="input_tag_office">office</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="general" id="input_tag_general" name="tags">
+                                        <label class="filter_label" for="input_tag_general">general</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="writing" id="input_tag_writing" name="tags">
+                                        <label class="filter_label" for="input_tag_writing">writing</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="school" id="input_tag_school" name="tags">
+                                        <label class="filter_label" for="input_tag_school">school</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="electronics" id="input_tag_electronics" name="tags">
+                                        <label class="filter_label" for="input_tag_electronics">electronics</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="organization" id="input_tag_organization" name="tags">
+                                        <label class="filter_label" for="input_tag_organization">organization</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="travel" id="input_tag_travel" name="tags">
+                                        <label class="filter_label" for="input_tag_travel">travel</label>
+                                    </li>
+                                    <li>
+                                        <input class="filter_checkbox" type="checkbox" value="kids" id="input_tag_kids" name="tags">
+                                        <label class="filter_label" for="input_tag_kids">kids</label>
+                                    </li>
+                                </ul>
+                                <legend class="filter_legend_date">
+                                    <span><h2>Date</h2></span>
+                                </legend>
+                                <ul>
+                                    <li>
+                                        <input class="filter_checkbox_date" type="date" id="input_tag_date" name="date">
+                                    </li>
+                                </ul>
+
+                                <button value="search" for="filter_form">search</button>
+                            </form>
+                        </div>
+                    </aside>
+                    <section class="orders_section">
+                        <div class="orders_container">
+
+                            <%  if (typeof docs !== 'undefined') {
+                                    docs.forEach(function(doc) { %>
+                                        <div class="order">
+                                            <div class="div_every_element">
+                                                <label class="label">date:</label>
+                                                <div class="content"><%= doc.saleDate %></div>
+                                            </div>
+                                            <% doc.items.forEach(function(item, index) { %>
+                                                <div class="div_every_element">
+                                                    <label class="label">Item<%= index + 1 %>:</label>
+                                                    <div class="content">
+                                                        <div class="div_item">
+                                                            <div>name: <%= item.name %></div>
+                                                            <div>price: <%= item.price.toString() %></div>
+                                                            <div>quantity: <%= item.quantity %></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <% }); %>
+                                            <div class="div_every_element">
+                                                <label class="label">Store Location:</label>
+                                                <div class="content"><%= doc.storeLocation %></div>
+                                            </div>
+                                            <div class="div_every_element">
+                                                <label class="label">Customer:</label>
+                                                <div class="content">
+                                                    <div class="div_customer">
+                                                        <div>gender: <%= doc.customer.gender %></div>
+                                                        <div>age: <%= doc.customer.age %></div>
+                                                        <div>email: <%= doc.customer.email %></div>
+                                                        <div>satisfaction: <%= doc.customer.satisfaction %></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="div_every_element">
+                                                <label class="label">Coupon used:</label>
+                                                <div class="content"><%= doc.couponUsed %></div>
+                                            </div>
+                                            <div class="div_every_element">
+                                                <label class="label">Purchase method:</label>
+                                                <div class="content"><%= doc.purchaseMethod %></div>
+                                            </div>
+                                        </div>
+                                    <% }); 
+                            }%>
+                            
+                        </div>
+                    </section>
             </section>
         </div>
     </body>

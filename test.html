@@ -6,330 +6,164 @@
         <link rel="stylesheet" href="/css/createStyle.css" type="text/css">
         <script src="/js/create.js"></script>
     </head>
-    <style>
-        *{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-}
-body{
-    background: #b8f8e8;
-    height: 89vh;
-}
-nav{
-    background: #0082e6;
-    height: 80px;
-    width: 100%;
-}
-label.logo{
-    color: white;
-    font-size: 35px;
-    line-height: 80px;
-    padding: 0 100px;
-    font-weight: bold;
-}
-nav ul{
-    float: right;
-    margin-right: 20px;
-}
-nav ul li{
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
-}
-nav ul li a{
-    color: white;
-    font-size: 17px;
-    padding: 7px 13px;
-    border-radius: 3px;
-    text-transform: uppercase;
-}
-a:hover{
-    background: #1b9bff;
-    transition: .5s;
-}
-.createTitle{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    border-bottom: 1px solid black;
-}
-.bodycontent{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-.insertContainer{
-    
-    background-color: white;
-    border-radius: 3%;
-
-    width: 500px;
-    height: 510px;
-}
-.insertContainer form{
-    padding: 5px;
-}
-.insertContainer label{
-    font-size: 20px;
-    margin-right: 10px;
-}
-
-.insertContainer form div{
-    padding-bottom: 5px;
-}
-.div_item_label_button_container{
-    position: relative;
-    display: flex;
-}
-.itemLabel{
-    width: 50%;
-}
-.div_add_button{
-    width: 50%;
-    display: flex;
-    justify-content:  flex-end;
-    align-items: center;
-}
-.addButton{
-    border: 1px solid;
-    line-height: 1.5;
-    padding: 0 20px;
-    font-size: 1rem;
-    text-align: center;
-    border-radius: 10px;
-    background-color: white;
-}
-.addButton:active {
-    box-shadow:
-    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
-}
-
-.div_item_list {
-    height: 180px;
-    overflow-y: auto;
-}
-.div_item_label_button_container{
-    border: 1px solid black;
-    padding: 5px;
-}
-
-#item_sales_input_list {
-    width: 100%;
-    display: flex;
-    margin-top: 3px;
-}
-
-.li_colum{
-    padding: 15px;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    flex-basis: 33.33%;
-}
-.li_colum_first{
-    padding: 15px;
-    border: 1px solid black;
-    flex-basis: 33.33%;
-}
-.colum {
-    display: flex;
-    flex-direction: column;
-}
-
-.colum li {
-    list-style: none;
-    padding: 0;
-}
-
-.colum li label{
-    display: block;
-    padding: 0;
-    margin: 0;
-}
-.colum li input{
-    padding: 0;
-    margin: 0;
-    max-width: 100px;
-}
-.create_button input{
-    size: 10px;
-}
-.div_item_table{
-    display: table;
-    border-collapse: separate;
-    box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
-    border-color: gray;
-    height: 170px;
-}
-.div_item_table tbody{
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-.div_item_table tr{
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-}
-.div_item_table th{
-    display: table-cell;
-    vertical-align: inherit;
-    font-weight: bold;
-    text-align: -internal-center;
-}
-    </style>
-    <body>
-        <div>
-        <nav>
-            <label class="logo">Supply Management System</label>
-            <ul>
-                <li><a href="/home" role="button">home</a></li>
-                <li><a href="/create" role="button">create</a></li>
-                <li><a href="/find" role="button">find</a></li>
-                <li><a href="/logout" role="button">logout</a></li>
-            </ul>
-        </nav>
-        </div>
-        <div class="bodycontent">
-            <div class="insertContainer">
-            
-                <div class="createTitle">
-                    Create new data
-                </div>
-                <form action="/create" method="post" id="form_create">
-
-                    <div>   
-                        <label for="gender"><b>Customer gender: </b></label>
-
-                        <label for="M" style="margin-right: 0px;"><b>M</b></label>
-                            <input type="radio" id="M" name="gender" value="M" required>
-
-                        <label for="F" style="margin-right: 0px; margin-left: 10px;"><b>F</b></label>
-                            <input type="radio" id="F" name="gender" value="F" required><br>
-                    </div>
-                    <div> 
-                        <label for="age"><b>Age: </b></label>
-                            <input type="number" id="age" name="age" placeholder="" min="0" max="100" required><br>
-                    </div>
-                    <div>
-                        <label for="email"><b>email: </b></label>
-                            <input type="email" id="email" name="email" placeholder="" required><br>
-                    </div>
-                    <div>
-                        <label for="satisfaction"><b>satisfaction: </b></label>
-                            <input type="number" id="satisfaction" name="satisfaction" placeholder="1-10" min="1" max="10" required><br>
-                    </div>
-
-                    <div>
-                        <label for="storeLocation"><b>Store Location: </b></label>
-                        <input list="storeLocations" name="storeLocation" required>
-                        <datalist id="storeLocations">
-                            <option value="London"></option>
-                            <option value="San Diego"></option>
-                            <option value="Denver"></option>
-                            <option value="Seattle"></option>
-                            <option value="Austin"></option>
-                            <option value="New York"></option>
-                        </datalist>
-                    </div>
-                    <div>
-                        <label for="couponUsed"><b>coupon Used: </b></label>
-
-                        <input type="radio" id="couponUsedTrue" name="couponUsed" value="true" required checked>
-                        <label for="couponUsedTrue" style="margin-right: 5px;"><b>True</b></label>
-                        
-                        <input type="radio" id="couponUsedFalse" name="couponUsed" value="false" required>
-                        <label for="couponUsedFalse"><b>False</b></label><br>
-                        
-                    </div>
-                    
-                    <div>
-                        <label for="purchaseMethodRadio"><b>Purchased Method: </b></label>
-
-                        <input type="radio" id="purchaseMethod1" name="purchaseMethod" value="instore" required checked>
-                        <label for="purchaseMethod1" style="margin-right: 5px;"><b>In store</b></label>
-
-                        <input type="radio" id="purchaseMethod2" name="purchaseMethod" value="online" required>
-                        <label for="purchaseMethod2" ><b>Online</b></label>           
-
-                        <input type="radio" id="purchaseMethod3" name="purchaseMethod" value="phone" required>
-                        <label for="purchaseMethod3" ><b>Phone</b></label>         
-                    </div>
-
-                    <div>
-                        <label for="saledate"><b>Sale Date</b></label>
-                        <input type="datetime-local" id="saledate" required><br>
-                    </div>
-
-                    <div class="div_item_label_button_container">
-                        <label class="itemLabel">Item sales</label>
-
-                        <div class="div_add_button">
-                            <input type="button" class="addButton" value="new row" onclick="addRow()"></button>
-                        </div>
-                    </div>
-                    <div class="div_item_list" id="div_item_list">
-                        <ul id="item_sales_input_list">
-                            <li class="li_colum_first">
-                                <ul class="colum">
-                                    <li>
-                                        <label for="name_of_item">Item Name</label>
-                                        <input list="name_of_item" type="text" class="field_style">
-                                        <datalist id="name_of_item">
-                                            <option value="envelopes"></option>
-                                            <option value="notepad"></option>
-                                            <option value="printer paper"></option>
-                                            <option value="laptop"></option>
-                                            <option value="pens"></option>
-                                            <option value="binder"></option>
-                                            <option value="backpack"></option>
-                                        </datalist>
-                                    </li> 
-                                </ul>
-                            </li>
-
-                            <li class="li_colum">
-                                <ul class="colum">
-                                    <li>
-                                        <label for="price_of_item">Price</label>
-                                        <input id="price_of_item" type="number" class="field_style" step="0.01" min="0">
-                                    </li>
-                                </ul>
-                            </li>
-                            
-                            <li class="li_colum">
-                                <ul class="colum">
-                                    <li>
-                                        <label for="quantity_of_item">Quantity</label>
-                                        <input id="quantity_of_item" type="number" class="field_style" min="0">
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <div class="cretae_button">
-                        <button type="submit" name="create" for="form_create">create</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <form class="filter_form">
+        <legend class="filter_legend_location">
+            <span><h2>Location</h2></span>
+        </legend>
+        <ul>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="London" id="London">
+                <label class="filter_label" for="London">London</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="SanDiego" id="SanDiego">
+                <label class="filter_label" for="SanDiego">San Diego</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="Denver" id="Denver">
+                <label class="filter_label" for="Denver">Denver</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="Seattle" id="Seattle">
+                <label class="filter_label" for="Seattle">Seattle</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="Austin" id="Austin">
+                <label class="filter_label" for="Austin">Austin</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="NewYork" id="NewYork">
+                <label class="filter_label" for="NewYork">New York</label>
+            </li>
+        </ul>
+        <legend class="filter_legend_coupon">
+            <span><h2>coupon</h2></span>
+        </legend>
+        <ul>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="true" id="couponused_true">
+                <label class="filter_label" for="couponused_true">True</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="false" id="couponused_false">
+                <label class="filter_label" for="couponused_false">False</label>
+            </li>
+        </ul>
+        <legend class="filter_legend_purchaseMethod">
+            <span><h2>Purchase Method</h2></span>
+        </legend>
+        <ul>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="In value" id="purchase_method_instore">
+                <label class="filter_label" for="purchase_method_instore">In store</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="online" id="purchase_method_online">
+                <label class="filter_label" for="purchase_method_online">Online</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="phone" id="purchase_method_online">
+                <label class="filter_label" for="purchase_method_online">Phone</label>
+            </li>
+        </ul>
+        <legend class="filter_legend_item">
+            <span><h2>Item</h2></span>
+        </legend>
+        <ul>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_envelopes">
+                <label class="filter_label" for="input_item_envelopes">envelopes</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_notepad">
+                <label class="filter_label" for="input_item_notepad">notepad</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_printerpaper">
+                <label class="filter_label" for="input_item_printerpaper">printer paper</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_laptop">
+                <label class="filter_label" for="input_item_laptop">laptop</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_pens">
+                <label class="filter_label" for="input_item_pens">pens</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_binder">
+                <label class="filter_label" for="input_v_binder">binder</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="envelopes" id="input_item_backpack">
+                <label class="filter_label" for="input_item_backpack">backpack</label>
+            </li>
+        </ul>
+        <legend class="filter_legend_tag">
+            <span><h2>Tag</h2></span>
+        </legend>
+        <ul>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="stationary" id="input_tag_stationary">
+                <label class="filter_label" for="input_tag_stationary">stationary</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="office" id="input_tag_office">
+                <label class="filter_label" for="input_tag_office">office</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="general" id="input_tag_general">
+                <label class="filter_label" for="input_tag_general">general</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="writing" id="input_tag_writing">
+                <label class="filter_label" for="input_tag_writing">writing</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="school" id="input_tag_school">
+                <label class="filter_label" for="input_tag_school">school</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="electronics" id="input_tag_electronics">
+                <label class="filter_label" for="input_tag_electronics">electronics</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="organization" id="input_tag_organization">
+                <label class="filter_label" for="input_tag_organization">organization</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="travel" id="input_tag_travel">
+                <label class="filter_label" for="input_tag_travel">travel</label>
+            </li>
+            <li>
+                <input class="filter_checkbox" type="checkbox" value="kids" id="input_tag_kids">
+                <label class="filter_label" for="input_tag_kids">kids</label>
+            </li>
+        </ul>
+        <legend class="filter_legend_date">
+            <span><h2>Date</h2></span>
+        </legend>
+        <ul>
+            <li>
+                <input class="filter_checkbox" type="date" id="input_tag_date">
+            </li>
+        </ul>
+    </form>
     </body>
     <script>
-    function addRow() {
-        var itemSalesList = document.getElementById("item_sales_input_list");
-        var clonedList = itemSalesList.cloneNode(true);
-        document.getElementById("div_item_list").appendChild(clonedList);
-    }
+        // Get all the checkboxes
+        const checkboxes = document.querySelectorAll('.filter_checkbox');
+
+        // Add event listener to each checkbox
+        checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', (event) => {
+            // Check if the checkbox is checked
+            if (event.target.checked) {
+            // Log the checkbox value
+            console.log(event.target.value);
+            }
+        });
+        });
     </script>
 </html>
 
