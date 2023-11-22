@@ -80,6 +80,7 @@ a:hover{
 .itemLabel{
     width: 50%;
 }
+
 .div_add_button{
     width: 50%;
     display: flex;
@@ -96,6 +97,21 @@ a:hover{
     background-color: white;
 }
 .addButton:active {
+    box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.deleteButton{
+    border: 1px solid;
+    line-height: 1.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+}
+.deleteButton:active {
     box-shadow:
     inset -2px -2px 3px rgba(255, 255, 255, 0.6),
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);

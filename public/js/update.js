@@ -10,4 +10,6 @@ function addRow() {
     });
     
     document.getElementById("div_item_list").appendChild(clonedList);
+    console.log(document.getElementById("div_item_list").childElementCount);
 }
+
