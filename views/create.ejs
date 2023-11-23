@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8 "> 
+        <title>create</title>
+        <link rel="stylesheet" href="/css/createStyle.css" type="text/css">
+        <script src="js/create.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    </head>
+    <body>
+        <div>
+        <nav>
+            <label class="logo">Supply Management System</label>
+            <ul>
+                <li><a href="/home" role="button">home</a></li>
+                <li><a href="/create" role="button">create</a></li>
+                <li><a href="/find" role="button">find</a></li>
+                <li><a href="/logout" role="button">logout</a></li>
+            </ul>
+        </nav>
+        </div>
+        <div class="bodycontent">
+            <div class="insertContainer">
+            
+                <div class="createTitle">
+                    Create new data
+                </div>
+                <form action="/create" method="post" id="form_create">
+
+                    <div>   
+                        <label for="gender"><b>Customer gender: </b></label>
+
+                        <label for="M" style="margin-right: 0px;"><b>M</b></label>
+                            <input type="radio" id="M" name="gender" value="M" required checked>
+
+                        <label for="F" style="margin-right: 0px; margin-left: 10px;"><b>F</b></label>
+                            <input type="radio" id="F" name="gender" value="F" required><br>
+                    </div>
+                    <div> 
+                        <label for="age"><b>Age: </b></label>
+                            <input type="number" id="age" name="age" placeholder="" min="0" max="100" required><br>
+                    </div>
+                    <div>
+                        <label for="email"><b>email: </b></label>
+                            <input type="email" id="email" name="email" placeholder="" required><br>
+                    </div>
+                    <div>
+                        <label for="satisfaction"><b>satisfaction: </b></label>
+                            <input type="number" id="satisfaction" name="satisfaction" placeholder="1-10" min="1" max="10" required><br>
+                    </div>
+
+                    <div>
+                        <label for="storeLocation"><b>Store Location: </b></label>
+                        <input list="storeLocations" name="storeLocation" required>
+                        <datalist id="storeLocations">
+                            <option value="London"></option>
+                            <option value="San Diego"></option>
+                            <option value="Denver"></option>
+                            <option value="Seattle"></option>
+                            <option value="Austin"></option>
+                            <option value="New York"></option>
+                        </datalist>
+                    </div>
+                    <div>
+                        <label for="couponUsed"><b>coupon Used: </b></label>
+
+                        <input type="radio" id="couponUsedTrue" name="couponUsed" value="true" required checked>
+                        <label for="couponUsedTrue" style="margin-right: 5px;"><b>True</b></label>
+                        
+                        <input type="radio" id="couponUsedFalse" name="couponUsed" value="false" required>
+                        <label for="couponUsedFalse"><b>False</b></label><br>
+                        
+                    </div>
+                    
+                    <div>
+                        <label for="purchaseMethodRadio"><b>Purchased Method: </b></label>
+
+                        <input type="radio" id="purchaseMethod1" name="purchaseMethod" value="In store" required checked>
+                        <label for="purchaseMethod1" style="margin-right: 5px;"><b>In store</b></label>
+
+                        <input type="radio" id="purchaseMethod2" name="purchaseMethod" value="Online" required>
+                        <label for="purchaseMethod2" ><b>Online</b></label>           
+
+                        <input type="radio" id="purchaseMethod3" name="purchaseMethod" value="Phone" required>
+                        <label for="purchaseMethod3" ><b>Phone</b></label>         
+                    </div>
+
+                    <div>
+                        <label for="saledate"><b>Sale Date</b></label>
+                        <input type="datetime-local" id="saledate" required name="date"><br>
+                    </div>
+
+                    <div class="div_item_label_button_container">
+                        <label class="itemLabel">Item sales</label>
+
+                        <div class="div_add_button">
+                            <input type="button" class="addButton" value="new row" onclick="addRow()"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="div_item_list" id="div_item_list">
+                        <ul id="item_sales_input_list" >
+                            <li class="li_colum_first">
+                                <ul class="colum">
+                                    <li>
+                                        <label for="name_of_item">Item Name</label>
+                                        <input list="name_of_item" type="text" class="field_style"  name="item_name[]" required>
+                                        <datalist id="name_of_item">
+                                            <option value="envelopes"></option>
+                                            <option value="notepad"></option>
+                                            <option value="printer paper"></option>
+                                            <option value="laptop"></option>
+                                            <option value="pens"></option>
+                                            <option value="binder"></option>
+                                            <option value="backpack"></option>
+                                        </datalist>
+                                    </li> 
+                                </ul>
+                            </li>
+
+                            <li class="li_colum">
+                                <ul class="colum">
+                                    <li>
+                                        <label for="price_of_item">Price</label>
+                                        <input id="price_of_item" type="number" class="field_style" step="0.01" min="0" name="item_price[]" required>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li class="li_colum">
+                                <ul class="colum">
+                                    <li>
+                                        <label for="quantity_of_item">Quantity</label>
+                                        <input id="quantity_of_item" type="number" class="field_style" min="0" name="item_quantity[]" required>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cretae_button">
+                        <button type="submit" for="form_create">create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!-- tag: ['stationary', 'office', 'general', 'writing', 'school', 'electronics', 'organization', 'travel', 'kids']-->
+
+<!-- name: ['envelopes', 'notepad', 'printer paper', 'laptop', 'pens', 'binder', 'backpack']-->
+
+<!-- location: ['London', 'San Diego', 'Denver', 'Seattle', 'Austin', 'New York']-->
+
+<!-- name with tag [('envelopes', ['stationary', 'office', 'general']),
+    ('notepad', ['office', 'writing', 'school']), 
+    ('printer paper', ['office', 'stationary']), 
+    ('laptop', ['electronics', 'school', 'office']), 
+    ('pens', ['writing', 'office', 'school', 'stationary']),
+    ('binder', ['school', 'general', 'organization']), 
+    ('backpack', ['school', 'travel', 'kids'])]-->

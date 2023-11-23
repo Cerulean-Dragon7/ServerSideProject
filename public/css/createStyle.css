@@ -1,0 +1,153 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+body{
+    background: #b8f8e8;
+    height: 89vh;
+}
+nav{
+    background: #0082e6;
+    height: 80px;
+    width: 100%;
+}
+label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+a:hover{
+    background: #1b9bff;
+    transition: .5s;
+}
+.createTitle{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.bodycontent{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.insertContainer{
+    
+    background-color: white;
+    border-radius: 3%;
+
+    width: 500px;
+    height: 510px;
+}
+.insertContainer form{
+    padding: 5px;
+}
+.insertContainer label{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.insertContainer form div{
+    padding-bottom: 5px;
+}
+.div_item_label_button_container{
+    position: relative;
+    display: flex;
+}
+.itemLabel{
+    width: 50%;
+}
+.div_add_button{
+    width: 50%;
+    display: flex;
+    justify-content:  flex-end;
+    align-items: center;
+}
+.addButton{
+    border: 1px solid;
+    line-height: 1.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+}
+.addButton:active {
+    box-shadow:
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.div_item_list {
+    height: 180px;
+    overflow-y: auto;
+}
+.div_item_label_button_container{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#item_sales_input_list {
+    width: 100%;
+    display: flex;
+    margin-top: 3px;
+}
+
+.li_colum{
+    padding: 15px;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    flex-basis: 33.33%;
+}
+.li_colum_first{
+    padding: 15px;
+    border: 1px solid black;
+    flex-basis: 33.33%;
+}
+.colum {
+    display: flex;
+    flex-direction: column;
+}
+
+.colum li {
+    list-style: none;
+    padding: 0;
+}
+
+.colum li label{
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+.colum li input{
+    padding: 0;
+    margin: 0;
+    max-width: 100px;
+}
+.create_button input{
+    size: 10px;
+}

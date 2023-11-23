@@ -1,0 +1,18 @@
+{
+    "name": "supply_management_system",
+    "description": "Node Express Project",
+    "author": "Ng Ka yu 13329549",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "*",
+        "ejs": "*",
+        "nodemon": "*",
+        "body-parser": "*",
+        "cookie-session": "*",
+        "mongodb": "*"
+    },
+    "engine": "*",
+    "scripts": {
+        "start": "nodemon server"
+    }
+}
