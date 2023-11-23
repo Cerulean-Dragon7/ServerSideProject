@@ -851,6 +851,7 @@ app.put('/api/update/date/:date/*', async function(req,res){
 //man@bob.mz
 //curl -X DELETE localhost:8099/api/delete/email/man@bob.mz
 
+
 app.delete('/api/delete/email/:email',async function( req, res){
     try{
         console.log(req.params.email);
