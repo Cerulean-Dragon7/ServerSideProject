@@ -10,7 +10,7 @@
         "cookie-session": "*",
         "mongodb": "*"
     },
-    "engine": "*",
+    "engine": ">=21.2.0",
     "scripts": {
         "start": "node server"
     }
