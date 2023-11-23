@@ -71,10 +71,14 @@ In the find page there are a list of checkbox for user to find the documents.
 ********************************************
 # CRUD service
 - Update
-- The user can update the oreder information by click the edit button on each document
-- When you click the edit button it when show a form for you the change the data
-- Only the Ojectid and the sale date is fixed
-- you also can add a new item or delete a item
+
+    The user can update the oreder information by click the edit button on each document
+
+    When you click the edit button it when show a form for you the change the data
+
+    Only the Ojectid and the sale date is fixed
+
+    you also can add a new item or delete a item
 
 # CRUD service
 - Delete
