@@ -6,13 +6,12 @@
     "dependencies": {
         "express": "*",
         "ejs": "*",
-        "nodemon": "*",
         "body-parser": "*",
         "cookie-session": "*",
         "mongodb": "*"
     },
     "engine": "*",
     "scripts": {
-        "start": "nodemon server"
+        "start": "node server"
     }
 }
