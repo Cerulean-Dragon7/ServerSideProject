@@ -133,12 +133,12 @@ In this project, there are four HTTP request types, post, get, put, delete
     delete request is used for delete.
 
     Path URL: /api/delete/email/:email
-    
+
     Test: curl -X DELETE localhost:8099/api/delete/email/man@bob.mz
 
-    //eja@ko.es
-    //pan@cak.zm
-    //man@bob.mz
+    'eja@ko.es'
+    'pan@cak.zm'
+    'man@bob.mz'
     above email is existing email that can be delete
 
 For all restful CRUD services, login should be done at first.
