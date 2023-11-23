@@ -190,7 +190,7 @@
                             <% if (typeof docs !== 'undefined') {
                                 docs.forEach(function(doc, index) { %>
                         
-                            <div class="order_title_container" id=<%= docs[index]._id%>>
+                            <div class="order_title_container" id=<%= docs[index]._id.toString() %>>
                                 <div class="title">
                                     <div>
                                         <label>Order: <%= index+1 %></label>
@@ -216,7 +216,7 @@
                                         <div class="content">
                                             <div class="div_item">
                                                 <div><h4>name: </h4><span  class="item_name"><%= item.name %></span></div>
-                                                <div><h4>price: </h4> <span class="item_price"><%= item.price.toString() %></span></div>
+                                                <div><h4>price: </h4> <span class="item_price"><%= item.price %></span></div>
                                                 <div><h4>quantity: </h4><span class="item_quantity"><%= item.quantity %></span></div>
                                             </div>
                                         </div>
